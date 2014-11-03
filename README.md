@@ -9,3 +9,10 @@ Currently, you can see the next occurrences of a given cron expression.
     > cv.next_occurrences('30 * * * *')
     #=> a list of timestamps when this cron expression will trigger over the next week
 
+Notes:
+
+* Some experimentation with a web server based visualization using vis.js.
+
+    $ rackup
+    $ open http://localhost:9292/index.html
+

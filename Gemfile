@@ -4,3 +4,5 @@ source 'https://rubygems.org'
 gem 'parse-cron', '~> 0.1.4'
 
 gem 'pry'
+
+gem 'sinatra'
