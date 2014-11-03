@@ -26,7 +26,7 @@ class CrontabVis
       parsed_line.next(previous_occurrences.last)
     end
 
-    if next_week.cover?(next_occurrence)
+    if next_week_range.cover?(next_occurrence)
       next_occurrences_for(
         parsed_line: parsed_line,
         previous_occurrences: [previous_occurrences, next_occurrence].flatten
@@ -40,7 +40,23 @@ class CrontabVis
     CronParser.new(line)
   end
 
-  def next_week
-    anchor_time..(anchor_time + 3600*24*7)
+  def next_week(step: 30)
+    return @next_week if @next_week
+
+    start_time = anchor_time
+    end_time = start_time + 24*3600*7
+
+    timestamps = []
+
+    while start_time < end_time
+     start_time += step
+     timestamps << [start_time]
+    end
+
+    @next_week = timestamps.flatten
+  end
+
+  def next_week_range
+    next_week.first..next_week.last
   end
 end
