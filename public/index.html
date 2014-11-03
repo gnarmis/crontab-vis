@@ -26,7 +26,12 @@
     var items = new vis.DataSet(eventData);
 
     // Configuration for the Timeline
-    var options = {};
+    var options = {
+      // Set global item type. Type can also be specified for items individually
+      // Available types: 'box' (default), 'point', 'range', 'rangeoverflow'
+      type: 'point',
+      showMajorLabels: false
+    };
 
     // Create a Timeline
     var timeline = new vis.Timeline(container, items, options);

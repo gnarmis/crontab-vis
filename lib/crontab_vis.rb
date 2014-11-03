@@ -1,4 +1,5 @@
 require 'parse-cron'
+require 'time'
 
 # This class helps visualize cron expressions over time, allowing people to
 # see how the next week will look like with the given cron expression.
@@ -11,6 +12,19 @@ class CrontabVis
     else
       anchor_time
     end
+  end
+
+  def next_events(cron_expression)
+    occurrences = next_occurrences(cron_expression)
+
+    occurrences.each_with_index.
+      each_with_object([]) do |(item, index), list|
+        list << {
+          id: index,
+          content: cron_expression,
+          start: item.iso8601
+        }
+      end
   end
 
   def next_occurrences(cron_expression)
