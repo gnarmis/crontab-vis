@@ -13,6 +13,7 @@ Notes:
 
 * Some experimentation with a web server based visualization using vis.js.
 
-      $ rackup
-      $ open http://localhost:9292/index.html
-
+```
+$ rackup
+$ open http://localhost:9292/index.html
+```
